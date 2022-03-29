@@ -1,0 +1,163 @@
+" :actionlist
+
+nnoremap <SPACE> <Nop>
+let mapleader = " "
+set history=1000
+
+" set idearefactormode=visual
+
+set scrolloff=3
+set incsearch
+set hlsearch
+set nu
+set rnu
+set ignorecase
+set smartcase
+
+" use Vim handler in normal mode and IDE handler in insert and visual modes
+sethandler <C-A> n:vim i-x:ide
+sethandler <C-C> n:vim i-x:ide
+" sethandler <C-F> n:vim i-x:ide
+sethandler <C-X> n:vim i-x:ide
+sethandler <C-J> n:vim i-x:ide
+
+" plugins
+set surround            " commands: ys, cs, ds, S
+set multiple-cursors    " commands <A-n>, <A-x>, <A-p>, g<A-n>
+set ReplaceWithRegister " commands: gr, grr  ex:griw
+set exchange            " commands: cx, cxx, X, cxc
+set textobj-entire      " additional text objects: ae, ie
+set vim-indent-object   " additional text objects: ai, ii, aI, iI
+set highlightedyank     "
+set NERDTree
+
+" ideavim commands
+set ideajoin            "
+set showmode            " message on the status line to show current mode
+set showcmd             " show (partial) command in the status bar
+set wrapscan            " searches wrap around the end of fil
+
+" vim action
+nnoremap zh 50zh
+nnoremap zl 50zl
+
+" clipboard action
+noremap <Leader>y "*y
+noremap <Leader>p "*p
+
+" search action
+noremap <Leader>sc :nohlsearch<CR>
+noremap <Leader>sf :action Find<CR>
+noremap <Leader>sr :action Replace<CR>
+noremap <Leader>sF :action FindInPath<CR>
+noremap <Leader>sR :action ReplaceInPath<CR>
+
+" file action
+nnoremap <leader>fr :action RecentFiles<CR>
+nnoremap <leader>fb :action Switcher<CR>
+nnoremap <leader>fl :action RecentLocations<CR>
+nnoremap <leader>ff :action GotoFile<CR>
+nnoremap <leader>fc :action GotoClass<CR>
+nnoremap <leader>fs :action GotoSymbol<CR>
+nnoremap <leader>fa :action GotoAction<CR>
+nnoremap <leader>fn :NERDTree<CR>
+nnoremap <leader>ft :action ActivateProjectToolWindow<CR>
+nnoremap <leader>fT :NERDTreeFind<CR>
+
+" navigation action
+nnoremap s :action KJumpAction<CR>
+nnoremap S :action Back<CR>
+nnoremap D :action Forward<CR>
+nnoremap gd :action GotoDeclaration<CR>
+nnoremap gb :action GotoTypeDeclaration<CR>
+nnoremap gi :action GotoImplementation<CR>
+nnoremap gs :action GotoSuperMethod<CR>
+nnoremap gc :action JumpToLastChange<CR>
+nnoremap gC :action JumpToNextChange<CR>
+nnoremap ge :action GotoNextError<CR>
+nnoremap gE :action GotoPreviousError<CR>
+nnoremap gm :action MethodDown<cr>
+nnoremap gM :action MethodUp<cr>
+
+" tab action
+nnoremap R gt
+nnoremap E gT
+nnoremap tr :action MoveTabRight<CR>
+nnoremap td :action MoveTabDown<CR>
+nnoremap tm :action MoveEditorToOppositeTabGroup<CR>
+nnoremap tt :action ReopenClosedTab<CR>
+nnoremap to :action OpenEditorInOppositeTabGroup<CR>
+nnoremap tc :action CloseContent<CR>
+nnoremap tC :action CloseAllEditorsButActive<CR>
+
+" window action
+nnoremap <leader>wc :action ActivateCommitToolWindow<CR>
+nnoremap <leader>wd :action ActivateDebugToolWindow<CR>
+nnoremap <leader>wr :action ActivateRunToolWindow<CR>
+nnoremap <leader>wg :action ActivateVersionControlToolWindow<CR>
+nnoremap <leader>wm :action ActivateMavenToolWindow<CR>
+nnoremap <A-h> :action StretchSplitToLeft<CR>
+nnoremap <A-j> :action StretchSplitToBottom<CR>
+nnoremap <A-k> :action StretchSplitToTop<CR>
+nnoremap <A-l> :action StretchSplitToRight<CR>
+cmap term action ActivateTerminalToolWindow
+
+" code action
+nnoremap <leader>cu :action FindUsages<CR>
+nnoremap <leader>cr :action RenameElement<CR>
+nnoremap <leader>cg :action IntroduceVariable<CR>
+nnoremap <leader>cd :action QuickJavaDoc<CR>
+nnoremap <leader>cs :action SurroundWith<CR>
+nnoremap <leader>o :action FileStructurePopup<CR>
+nnoremap == :action ReformatCode<CR>:action OptimizeImports<CR>
+
+" editor 
+vnoremap < <gv
+vnoremap > >gv
+nnoremap zC :action CollapseAllRegions<CR>
+nnoremap zO :action ExpandAllRegions<CR>
+
+" version control
+noremap <leader>vv :action Git.ContextMenu<CR>
+nnoremap <leader>vc :action Git.CompareWithBranch<CR>
+
+" bookmarks and buffer
+nnoremap <leader>bb :action Bookmarks<CR>
+nnoremap <leader>bs :action ShowBookmarks<CR>
+nnoremap <leader>bt :action ToggleBookmark<CR>
+nnoremap <leader>bf :action AddToFavorites<CR>
+
+" quick buffer
+nnoremap <leader>b1 :e C:/Users/BFD-LT/.ideavimrc<CR>
+nnoremap <leader>b2 :e C:/Users/BFD-LT/Mine/note/01.md/00.quicknote.md<CR>
+nnoremap <leader>b3 :e C:/Users/BFD-LT/AppData/Roaming/JetBrains/IdeaIC2021.3/scratches/note.md<CR>
+
+" debugger
+noremap <leader>de :action QuickEvaluateExpression<CR>
+noremap <leader>dE :action EvaluateExpression<CR>
+vnoremap <leader>di :action Debugger.AddInlineWatch<CR>
+vnoremap <leader>dw :action Debugger.AddToWatch<CR>
+nnoremap <leader>db :action EditBrakpoint<CR>
+nnoremap <leader>dt :action ToggleLineBreakpoint<CR>
+nnoremap <leader>dr :action Debugger.RemoveAllBreakpointsInFile<CR>
+nnoremap <leader>dR :action Debugger.RemoveAllBreakpoints<CR>
+nnoremap <leader>dm :action XDebugger.MuteBreakpoints<CR>
+nnoremap <leader>dc :action ForceRunToCursor<CR>
+nnoremap <C-j> :action StepOver<CR>
+nnoremap <C-k> :action Resume<CR>
+nnoremap <C-h> :action StepOut<CR>
+nnoremap <C-l> :action ForceStepInto<CR>
+
+" run
+nnoremap <leader>rD :action ChooseDebugConfiguration<CR>
+nnoremap <leader>rd :action ChooseRunConfiguration<CR>
+nnoremap <leader>rP :action Debug<CR>
+nnoremap <leader>rp :action Run<CR>
+nnoremap <leader>rC :action DebugClass<CR>
+nnoremap <leader>rc :action RunClass<CR>
+nnoremap <leader>rr :action Rerun<CR>
+nnoremap <leader>rs :action Stop<CR>
+
+" quit
+nnoremap <leader>qq :action Exit<CR>
+nnoremap <leader>qr :action RestartIde<CR>
