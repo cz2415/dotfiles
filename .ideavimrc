@@ -1,11 +1,9 @@
-" :actionlist
-
+" space as leader
 nnoremap <SPACE> <Nop>
 let mapleader = " "
+
+" basic settings
 set history=1000
-
-" set idearefactormode=visual
-
 set scrolloff=3
 set incsearch
 set hlsearch
@@ -37,20 +35,12 @@ set showmode            " message on the status line to show current mode
 set showcmd             " show (partial) command in the status bar
 set wrapscan            " searches wrap around the end of fil
 
-" vim action
-nnoremap zh 50zh
-nnoremap zl 50zl
-
-" clipboard action
-noremap <Leader>y "*y
-noremap <Leader>p "*p
-
 " search action
-noremap <Leader>sc :nohlsearch<CR>
-noremap <Leader>sf :action Find<CR>
-noremap <Leader>sr :action Replace<CR>
-noremap <Leader>sF :action FindInPath<CR>
-noremap <Leader>sR :action ReplaceInPath<CR>
+noremap <leader>sc :nohlsearch<CR>
+noremap <leader>sf :action Find<CR>
+noremap <leader>sr :action Replace<CR>
+noremap <leader>sF :action FindInPath<CR>
+noremap <leader>sR :action ReplaceInPath<CR>
 
 " file action
 nnoremap <leader>fr :action RecentFiles<CR>
@@ -60,14 +50,16 @@ nnoremap <leader>ff :action GotoFile<CR>
 nnoremap <leader>fc :action GotoClass<CR>
 nnoremap <leader>fs :action GotoSymbol<CR>
 nnoremap <leader>fa :action GotoAction<CR>
-nnoremap <leader>fn :NERDTree<CR>
-nnoremap <leader>ft :action ActivateProjectToolWindow<CR>
+nnoremap <leader>fd :action GotoDatabaseObject<CR>
+nnoremap <C-p> :action GotoAction<CR>
+nnoremap <leader>ft :NERDTree<CR>
 nnoremap <leader>fT :NERDTreeFind<CR>
 
 " navigation action
 nnoremap s :action KJumpAction<CR>
 nnoremap S :action Back<CR>
 nnoremap D :action Forward<CR>
+nnoremap ga `.
 nnoremap gd :action GotoDeclaration<CR>
 nnoremap gb :action GotoTypeDeclaration<CR>
 nnoremap gi :action GotoImplementation<CR>
@@ -76,6 +68,7 @@ nnoremap gc :action JumpToLastChange<CR>
 nnoremap gC :action JumpToNextChange<CR>
 nnoremap ge :action GotoNextError<CR>
 nnoremap gE :action GotoPreviousError<CR>
+nnoremap gl :action ShowErrorDescription<CR>
 nnoremap gm :action MethodDown<cr>
 nnoremap gM :action MethodUp<cr>
 
@@ -107,19 +100,34 @@ nnoremap <leader>cu :action FindUsages<CR>
 nnoremap <leader>cr :action RenameElement<CR>
 nnoremap <leader>cg :action IntroduceVariable<CR>
 nnoremap <leader>cd :action QuickJavaDoc<CR>
-nnoremap <leader>cs :action SurroundWith<CR>
+vnoremap <leader>cs :action SurroundWith<CR>
 nnoremap <leader>o :action FileStructurePopup<CR>
-nnoremap == :action ReformatCode<CR>:action OptimizeImports<CR>
+nnoremap <leader>p :action ShowErrorDescription<CR>
+nnoremap == :action ReformatCode \| action OptimizeImports<CR>
 
 " editor 
 vnoremap < <gv
 vnoremap > >gv
 nnoremap zC :action CollapseAllRegions<CR>
 nnoremap zO :action ExpandAllRegions<CR>
+nnoremap zh 50zh
+nnoremap zl 50zl
+nnoremap zn :action ToggleDistractionFreeMode<CR>
+nnoremap zm :action MaximizeEditorInSplit<CR>
 
 " version control
 noremap <leader>vv :action Git.ContextMenu<CR>
 nnoremap <leader>vc :action Git.CompareWithBranch<CR>
+
+" global bookmark
+nnoremap ma mA
+nnoremap 'a 'A
+nnoremap ms mS
+nnoremap 's 'S
+nnoremap md mD
+nnoremap 'd 'D
+nnoremap mf mF
+nnoremap 'f 'F
 
 " bookmarks and buffer
 nnoremap <leader>bb :action Bookmarks<CR>
@@ -128,9 +136,7 @@ nnoremap <leader>bt :action ToggleBookmark<CR>
 nnoremap <leader>bf :action AddToFavorites<CR>
 
 " quick buffer
-nnoremap <leader>b1 :e C:/Users/BFD-LT/.ideavimrc<CR>
-nnoremap <leader>b2 :e C:/Users/BFD-LT/Mine/note/01.md/00.quicknote.md<CR>
-nnoremap <leader>b3 :e C:/Users/BFD-LT/AppData/Roaming/JetBrains/IdeaIC2021.3/scratches/note.md<CR>
+nnoremap <leader>b0 :e C:/Users/BFD-LT/.ideavimrc<CR>
 
 " debugger
 noremap <leader>de :action QuickEvaluateExpression<CR>
@@ -149,14 +155,15 @@ nnoremap <C-h> :action StepOut<CR>
 nnoremap <C-l> :action ForceStepInto<CR>
 
 " run
-nnoremap <leader>rD :action ChooseDebugConfiguration<CR>
-nnoremap <leader>rd :action ChooseRunConfiguration<CR>
-nnoremap <leader>rP :action Debug<CR>
-nnoremap <leader>rp :action Run<CR>
-nnoremap <leader>rC :action DebugClass<CR>
-nnoremap <leader>rc :action RunClass<CR>
+nnoremap <leader>rd :action ChooseDebugConfiguration<CR>
+nnoremap <leader>rD :action ChooseRunConfiguration<CR>
+nnoremap <leader>rp :action Debug<CR>
+nnoremap <leader>rP :action Run<CR>
+nnoremap <leader>rc :action DebugClass<CR>
+nnoremap <leader>rC :action RunClass<CR>
 nnoremap <leader>rr :action Rerun<CR>
 nnoremap <leader>rs :action Stop<CR>
+nnoremap <leader>ra :action RunAnything<CR>
 
 " quit
 nnoremap <leader>qq :action Exit<CR>
