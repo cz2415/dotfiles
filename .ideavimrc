@@ -7,8 +7,8 @@ set history=1000
 set scrolloff=3
 set incsearch
 set hlsearch
-set nu
-set rnu
+"set nu
+"set rnu
 set ignorecase
 set smartcase
 
@@ -51,7 +51,8 @@ nnoremap <leader>fc :action GotoClass<CR>
 nnoremap <leader>fs :action GotoSymbol<CR>
 nnoremap <leader>fa :action GotoAction<CR>
 nnoremap <leader>fd :action GotoDatabaseObject<CR>
-nnoremap <C-p> :action GotoAction<CR>
+nnoremap <C-S-p> :action GotoAction<CR>
+nnoremap <C-p> :action GotoFile<CR>
 nnoremap <leader>ft :NERDTree<CR>
 nnoremap <leader>fT :NERDTreeFind<CR>
 
@@ -73,8 +74,8 @@ nnoremap gm :action MethodDown<cr>
 nnoremap gM :action MethodUp<cr>
 
 " tab action
-nnoremap R gt
-nnoremap E gT
+nnoremap <C-tab> gt
+nnoremap <C-S-tab> gT
 nnoremap tr :action MoveTabRight<CR>
 nnoremap td :action MoveTabDown<CR>
 nnoremap tm :action MoveEditorToOppositeTabGroup<CR>
@@ -99,6 +100,7 @@ cmap term action ActivateTerminalToolWindow
 nnoremap <leader>cu :action FindUsages<CR>
 nnoremap <leader>cr :action RenameElement<CR>
 nnoremap <leader>cg :action IntroduceVariable<CR>
+vnoremap <leader>cg :action IntroduceVariable<CR>
 nnoremap <leader>cd :action QuickJavaDoc<CR>
 vnoremap <leader>cs :action SurroundWith<CR>
 nnoremap <leader>o :action FileStructurePopup<CR>
@@ -108,6 +110,7 @@ nnoremap == :action ReformatCode \| action OptimizeImports<CR>
 " editor 
 vnoremap < <gv
 vnoremap > >gv
+xnoremap  p pgvy
 nnoremap zC :action CollapseAllRegions<CR>
 nnoremap zO :action ExpandAllRegions<CR>
 nnoremap zh 50zh
@@ -118,16 +121,6 @@ nnoremap zm :action MaximizeEditorInSplit<CR>
 " version control
 noremap <leader>vv :action Git.ContextMenu<CR>
 nnoremap <leader>vc :action Git.CompareWithBranch<CR>
-
-" global bookmark
-nnoremap ma mA
-nnoremap 'a 'A
-nnoremap ms mS
-nnoremap 's 'S
-nnoremap md mD
-nnoremap 'd 'D
-nnoremap mf mF
-nnoremap 'f 'F
 
 " bookmarks and buffer
 nnoremap <leader>bb :action Bookmarks<CR>
