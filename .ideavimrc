@@ -28,6 +28,7 @@ set textobj-entire      " additional text objects: ae, ie
 set vim-indent-object   " additional text objects: ai, ii, aI, iI
 set highlightedyank     "
 set NERDTree
+set easymotion
 
 " ideavim commands
 set ideajoin            "
@@ -56,8 +57,16 @@ nnoremap <C-p> :action GotoFile<CR>
 nnoremap <leader>ft :NERDTree<CR>
 nnoremap <leader>fT :NERDTreeFind<CR>
 
+" easymotion
+map s <Plug>(easymotion-s2)
+nmap <leader>dj d<Plug>(easymotion-j)
+nmap <leader>dk d<Plug>(easymotion-k)
+nmap <leader>yj y<Plug>(easymotion-j)
+nmap <leader>yk y<Plug>(easymotion-k)
+nmap <leader>vj V<Plug>(easymotion-j)
+nmap <leader>vk V<Plug>(easymotion-k)
+
 " navigation action
-nnoremap s :action KJumpAction<CR>
 nnoremap S :action Back<CR>
 nnoremap D :action Forward<CR>
 nnoremap ga `.
